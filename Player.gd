@@ -24,7 +24,8 @@ func _input (event):
 		# 1000 = length of ray
 		var to = from + camera.project_ray_normal(mouse_event.position) * 1000
 		var result = space_state.intersect_ray(from, to)
-		if result.collider:
+		var collider = result.collider as CollisionObject
+		if collider:
 			path = navigation.get_simple_path(global_transform.origin, result.position)
 			path_index = 0
 			
